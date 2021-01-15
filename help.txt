@@ -1,0 +1,8 @@
+Download node according to OS from: https://nodejs.org/en/download/
+Install downloaded node file
+open command prompt
+run command in cmd: npm install -g @angular/cli
+Extract cse-nitk.rar file
+Set the path to the cse-nitk's extracted folder in cmd
+run command in cmd: ng serve
+after getting the success message in cmd open browser and load http://localhost:4200/
