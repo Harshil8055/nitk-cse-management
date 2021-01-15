@@ -1,0 +1,6 @@
+<div class="security-rights-component-container component-section-container">
+    <app-tab-selection [config]="tabSelectionConfig" (eTabClick)=tabClickHandler($event)></app-tab-selection>
+    <div class="security-rights-list-wrapper-container">
+        <app-security-rights-list [rightsEntityType]="selectedTab"></app-security-rights-list>
+    </div>
+</div>

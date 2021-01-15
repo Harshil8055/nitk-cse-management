@@ -1,0 +1,23 @@
+@import '../../../styles.scss';
+
+.students-component-container {
+    .students-course-list-container {
+        padding-left: 1rem;
+        width: 25%;
+        .course-year-container {
+            padding: 0.5rem 0rem 0.5rem 1.5rem;
+            span {
+                &:hover {
+                    cursor: pointer;
+                    color: $primaryColor;
+                }
+                &.batch-selected {
+                    color: $primaryColor;
+                }
+            }
+        }
+    }
+    .student-list-container {
+        width: 75%;
+    }
+}

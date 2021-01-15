@@ -1,0 +1,25 @@
+<div class="research-component-container component-section-container">
+    <app-tab-selection [config]="tabSelectionConfig" (eTabClick)=tabClickHandler($event)></app-tab-selection>
+    <div>
+        <div *ngIf="selectedTab && selectedTab === 'R&D_PROJECTS'">
+            <div class="panel-container">
+                <div class="panel-header-container">
+                    R & D Projects:
+                </div>
+                <div class="panel-body-container">
+                    <ol>
+                        <li>Information Security Education and awareness Phase-II-sponsored by DIT MCIT, PI: Dr. Alwyn Roshan Pais Co-PI: Dr. P. Santhi Thilagam, at the cost of 2.7 crore(Approx), 2015-2020</li>
+                        <li>Design of a modular FPGA accelerated Chip Multiprocessor Architecture Simulator - sponsored by DST, PI: Dr. Basavaraj Talawar, at the cost of 26.9 Lakhs, 2016-2019</li>
+                        <li>An automatic system for identification of phonological processes in children of age two and half to six and half years - sponsored by DST, PI: Dr. Shashidhar G. Koolagudi, Co-PI: Prof. Venkat Raja at the cost of 30.00 Lakhs, 2016-2019</li>
+                        <li>Retinal cysts identification and quantification from low SNR optical coherence tomography scans using image processing techniques- sponsored by DST (SERB EMR grant) PI: Dr. Jeny Rajan, Co- PI: Dr. Shashidhar G Koolagudi and Dr. Abhishek Kothari at the cost of 33.5 lakhs(Approx), 2017-2019</li>
+                        <li>Development of Tool for Detecting of Application Layer Distributed Denial of Service Attacks on Web Applications-- sponsored by MEITY Government of India, PI: Dr. P. Santhi Thilagam at the cost of 29.78 Lakhs, 2017-2019</li>
+                        <li>Characterization and identification of dialects in Kannada Language- sponsored by DST-Science & Engineering Research Board(SERB) PI: Dr. Shashidhar G. Koolagudi at the cost of 35 Lakhs, 2017-2020</li>
+                        <li>CP-ABE Scheme with Decryption Keys of Constant Size using ECC with Expensive Threshold Access – sponsored by DST .   PI:Alwyn Roshan Pais,         Co-PI(s): Dr. P. Santhi Thilagam &    Mr. Mahendra Pratap Singh at the cost of  31.12 Lakhs , 2018-2021</li>
+                        <li>Automatic detection and quantification of focal cortical dysplasia regions from magnetic resonance brain images using machine Learning techniques sponsored by DST (CSRI). PI: Dr.Jeny Rajan at the cost of  33.09 Lakhs, 2018-2021</li>
+                        <li>Quantitative Understanding of Energy in NFV Frameworks (QUEEN) sponsored by Intel Technology India Pvt. Ltd. PI: Dr. Mohit P Tahiliani , Co-PI(s): Dr. Basavaraj Talawar at the cost of 48 Lakhs, 2018-2020</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

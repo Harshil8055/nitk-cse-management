@@ -1,0 +1,75 @@
+<div class="contact-component-container component-section-container">
+    <div class="contact-card-container">
+        <div class="contact-form-wrapper-container">
+            <div class="header-title-container">
+                Contact Us
+            </div>
+            <div>
+                <form [formGroup]="contactForm" class="contact-form-container">
+                    <div class="contact-form-field-container">
+                        <div class="contact-field-label-container required-field">Name</div>
+                        <div class="contact-field-value-container">
+                            <input type="text" formControlName="name"/>
+                        </div>
+                    </div>
+                    <div class="contact-form-field-container">
+                        <div class="contact-field-label-container required-field">Email</div>
+                        <div class="contact-field-value-container">
+                            <input type="text" formControlName="email"/>
+                        </div>
+                    </div>
+                    <div class="contact-form-field-container">
+                        <div class="contact-field-label-container required-field">Subject</div>
+                        <div class="contact-field-value-container">
+                            <input type="text" formControlName="subject"/>
+                        </div>
+                    </div>
+                    <div class="contact-form-field-container">
+                        <div class="contact-field-label-container required-field">Messgae</div>
+                        <div class="contact-field-value-container">
+                            <textarea formControlName="message" rows="4" cols="50"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="contact-form-submit-button-container">
+                <button (click)="submitClickHandler()">Submit</button>
+            </div>
+        </div>
+        <div *ngIf="contactInfo" class="contact-info-container">
+            <div class="contact-info-header-container">
+                Contact Info
+            </div>
+            <div *ngIf="contactInfo.name" class="contact-info-detail-container display-flex">
+                <div class="contact-info-icon-container fa fa-user"></div>
+                <div class="contact-info-data-container">{{contactInfo.name}}</div>
+            </div>
+            <div *ngIf="contactInfo.designation" class="contact-info-detail-container display-flex">
+                <div class="contact-info-icon-container fa fa-address-card"></div>
+                <div class="contact-info-data-container">{{contactInfo.designation}}</div>
+            </div>
+            <div *ngIf="contactInfo.address" class="contact-info-detail-container display-flex">
+                <div class="contact-info-icon-container fa fa-map-marker"></div>
+                <div class="contact-info-data-container">{{contactInfo.address}}</div>
+            </div>
+            <div *ngIf="contactInfo.phone" class="contact-info-detail-container display-flex">
+                <div class="contact-info-icon-container fa fa-phone"></div>
+                <div class="contact-info-data-container">
+                    <div>{{contactInfo.phone}}</div>
+                    <div>{{contactInfo.officePhone}} <span class="font-style-italic">(Office)</span></div>
+                </div>
+            </div>
+            <div *ngIf="contactInfo.email && contactInfo.email.length" class="contact-info-detail-container display-flex">
+                <div class="contact-info-icon-container fa fa-at"></div>
+                <div class="contact-info-data-container">{{contactInfo.email}}</div>
+            </div>
+            <div class="contact-social-media-wrapper-container">
+                <div class="contact-social-media-container">
+                    <div class="contact-info-icon-container fa fa-twitter" (click)="navigateToTwitterPage()"></div>
+                    <div class="contact-info-icon-container fa fa-facebook" (click)="navigateToFacebookPage()"></div>
+                    <div class="contact-info-icon-container fa fa-instagram" (click)="navigateToInstagramPage()"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

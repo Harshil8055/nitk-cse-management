@@ -1,0 +1,63 @@
+<div class="marks-component-container component-section-container">
+    <div class="marks-filter-container">
+        <div class="filter-label-container required-field">
+            Course
+        </div>
+        <div class="filter-dropdown-container">
+            <select *ngIf="courseList && courseList.length" (change)="courseChangeHandler($event)" [ngModel]="null" required>
+                <option *ngFor="let course of courseList" [value]="course.id">{{course.name}}</option>
+            </select>
+            <select *ngIf="!(courseList && courseList.length)"></select>
+        </div>
+        <div class="filter-label-container required-field">
+            Year
+        </div>
+        <div class="filter-dropdown-container">
+            <select *ngIf="selectedCourse && selectedCourse.yearList && selectedCourse.yearList.length" [(ngModel)]="selectedYear" required>
+                <option *ngFor="let year of selectedCourse.yearList" [value]="year.year">{{year.title}}</option>
+            </select>
+            <select *ngIf="!(selectedCourse && selectedCourse.yearList && selectedCourse.yearList.length)"></select>
+        </div>
+        <div class="filter-label-container required-field">
+            Subject
+        </div>
+        <div class="filter-dropdown-container">
+            <select *ngIf="selectedCourse && selectedCourse.yearList && selectedCourse.yearList.length" [(ngModel)]="selectedYear" required>
+                <option *ngFor="let year of selectedCourse.yearList" [value]="year.year">{{year.title}}</option>
+            </select>
+            <select *ngIf="!(selectedCourse && selectedCourse.yearList && selectedCourse.yearList.length)"></select>
+        </div>
+        <div class="action-icon-container fa fa-filter" (click)="filterClickHandler()"></div>
+    </div>
+    <div class="marks-details-container" *ngIf="studentList && studentList.length">
+        <div class="mark-details-action-container">
+            <span class="action-icon-container fa fa-print" (click)="printClickHandler()"></span>
+            <span class="action-icon-container fa fa-save"></span>
+        </div>
+        <div id="studentTable">
+            <table class="table-container">
+                <thead class="table-header-container">
+                    <th class="table-first-column-container">Serial No.</th>
+                    <th class="table-second-column-container">Roll No.</th>
+                    <th class="table-third-column-container">Name</th>
+                    <th class="table-fourth-column-container">Marks ( Out of 100 )</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of studentList; index as i">
+                        <td class="table-first-column-container">{{i + 1}}</td>
+                        <td class="table-second-column-container">{{row.rollNo}}</td>
+                        <td class="table-third-column-container">{{row.name}}</td>
+                        <td class="table-fourth-column-container" (click)="markClickHandler(row)">
+                            <span *ngIf="!row.isEditMode">{{row.marks}}</span>
+                            <span *ngIf="row.isEditMode">
+                                <input style="width: 50%; text-align: center;" type="number" [(ngModel)]="row.marks" required>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>

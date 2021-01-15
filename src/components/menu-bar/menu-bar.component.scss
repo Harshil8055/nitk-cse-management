@@ -1,0 +1,30 @@
+@import '../../styles.scss';
+
+.menu-bar-component-container {
+    display: flex;
+    justify-content: flex-end;
+    .menu-bar-item-container {
+        width: 2.5rem;
+        height: 2.5rem;
+        background-color: white;
+        margin: 0rem 0.5rem;
+        border-radius: 50%;
+        position: relative;
+        color: black;
+        box-shadow: 0rem 0rem 0.12rem 0.18rem rgba(34, 35, 36, 0.2);
+        &:hover {
+            cursor: pointer;
+            box-shadow: 0rem 0rem 0.12rem 0.18rem rgba(34, 35, 36, 0.5);
+        }
+        &.menu-bar-item-selected {
+            background-color: $primaryColor;
+            color: white;
+        }
+        .menu-bar-icon-container {
+            position: absolute;
+            top: 28%;
+            right: 32%;
+            font-size: 1.15rem;
+        }
+    }
+}

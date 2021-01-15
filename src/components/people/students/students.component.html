@@ -1,0 +1,17 @@
+<div class="students-component-container component-section-container">
+    <div class="display-flex">
+        <div class="students-course-list-container">
+            <div *ngFor="let course of coursesList">
+                <div class="header-title-container">{{course.name}}</div>
+                <div *ngFor="let batch of course.yearList">
+                    <div class="course-year-container">
+                        <span [ngClass]="isBatchSelected(batch) ? 'batch-selected' : ''" (click)="yearTitleClickHandler(batch)">{{batch.title}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="student-list-container">
+            <app-student-details [courseId]="selectedCourseId" [year]="selectedYear"></app-student-details>
+        </div>
+    </div>
+</div>

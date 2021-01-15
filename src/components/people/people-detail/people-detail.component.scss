@@ -1,0 +1,97 @@
+@import '../../../styles.scss';
+
+.people-detail-component-container {
+    padding: 1rem 8rem;
+    .people-read-only-container {
+        .people-common-detail-wrapper-container {
+            position: relative;
+            margin-top: 4rem;
+            display: flex;
+            .people-personal-info-container {
+                width: 50%;
+                .people-detail-photo-container {
+                    position: absolute;
+                    top: -4.5rem;
+                    left: 44%;
+                    img {
+                        height: 8rem;
+                        width: 8rem;
+                        border-radius: 50%;
+                        padding: 0.5rem;
+                        background-color: white;
+                    }
+                }
+                .people-common-detail-container {
+                    padding: 0.5rem;
+                    .people-common-detail-icon-container {
+                        margin-right: 0.5rem;
+                        margin-top: 0.15rem;
+                        width: 1rem;
+                    }
+                    .people-common-detail-data-container {
+                        word-break: break-word;
+                    }
+                }
+            }
+            .people-academic-info-container {
+                width: 50%;
+                text-align: right;
+                .people-common-detail-container {
+                    padding: 0.5rem;
+                    justify-content: flex-end;
+                    .people-common-detail-icon-container {
+                        margin-right: 0.5rem;
+                        margin-top: 0.15rem;
+                        width: 1rem;
+                    }
+                    .people-common-detail-data-container {
+                        word-break: break-word;
+                    }
+                }
+            }
+        }
+        ul {
+            padding-inline-start: 2rem;
+        }
+        ol {
+            padding-inline-start: 2rem;
+        }
+    }
+    .people-form-container {
+        .people-form-card-container {
+            box-shadow: 0rem 0rem 0.25rem 0.1rem rgba(34, 35, 36, 0.2);
+            margin-bottom: 1rem;
+            padding: 0.5em;
+            .people-form-field-container {
+                display: flex;
+                padding: 0.25rem;
+                .people-field-label-container {
+                    width: 10rem;
+                    align-self: flex-end;
+                    text-align: right;
+                    padding-right: 1rem;
+                    height: 2rem;
+                }
+                .people-field-value-container {
+                    width: 83%;
+                }
+            }
+        }
+        .people-form-personal-info-container {
+            width: 70%;
+        }
+        .people-form-photo-container {
+            img {
+                box-shadow: 0rem 0rem 0.25rem 0.1rem rgba(34, 35, 36, 0.2);
+                margin: 1.5rem;
+                height: 20rem;
+                width: 20rem;
+            }
+        }
+        .people-form-field-container {
+            .people-field-label-container {
+                font-weight: bold;
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+<div class="login-component-container">
+    <div class="login-component-left-container">
+        <div class="nitk-logo-container">
+            <img src="assets\nitk-logo.png" alt="image"/>
+            <div>COMPUTER SCIENCE AND ENGINEERING</div>
+        </div>
+    </div>
+    <div class="login-component-right-container">
+        <div class="login-component-card-container">
+            <div class="login-photo-container">
+                <img src="assets\user-new-image.png" alt="image"/>
+            </div>
+            <form [formGroup]="loginForm" class="login-form-container">
+                <div class="login-form-control-container">
+                    <input type="text" formControlName="userName" placeholder="Username"/>
+                </div>
+                <div class="login-form-control-container">
+                    <input type="password" formControlName="password" placeholder="Password"/>
+                </div>
+                <div class="incurrect-credential-container">
+                    <span *ngIf="isIncurrectCredentials">User name or Password is incorrect.</span>
+                </div>
+                <button (click)=loginButtonClickHandler($event)>login</button>
+            </form>
+        </div>
+    </div>
+</div>

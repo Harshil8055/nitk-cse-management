@@ -1,0 +1,47 @@
+<div class="menu-bar-component-container">
+    <div class="menu-bar-item-container" [ngClass]="isOptionSelected(menuBarOptions.home) ? 'menu-bar-item-selected' : ''" (click)="menuBarItemClickHandler(menuBarOptions.home)" title="Home">
+        <span class="menu-bar-icon-container fa fa-home"></span>
+    </div>
+    <div class="menu-bar-item-container" [ngClass]="isOptionSelected(menuBarOptions.programmes) ? 'menu-bar-item-selected' : ''" (click)="menuBarItemClickHandler(menuBarOptions.programmes)" title="Prgrammes">
+        <span class="menu-bar-icon-container fa fa-university" style="right: 23%;"></span>
+    </div>
+    <div class="menu-bar-item-container" [ngClass]="isOptionSelected(menuBarOptions.courses) ? 'menu-bar-item-selected' : ''" (click)="menuBarItemClickHandler(menuBarOptions.courses)" title="Courses">
+        <span class="menu-bar-icon-container fa fa-book"></span>
+    </div>
+    <div class="menu-bar-item-container" [ngClass]="isOptionSelected(menuBarOptions.people) ? 'menu-bar-item-selected' : ''" (click)="menuBarItemClickHandler(menuBarOptions.people)" title="People">
+        <span class="menu-bar-icon-container fa fa-user"></span>
+    </div>
+    <div class="menu-bar-item-container" [ngClass]="isOptionSelected(menuBarOptions.students) ? 'menu-bar-item-selected' : ''" (click)="menuBarItemClickHandler(menuBarOptions.students)" title="Students">
+        <span class="menu-bar-icon-container fa fa-users" style="right: 25%;"></span>
+    </div>
+    <!-- <div class="menu-bar-item-container" [ngClass]="isOptionSelected(menuBarOptions.marks) ? 'menu-bar-item-selected' : ''" (click)="menuBarItemClickHandler(menuBarOptions.marks)" title="Marks">
+        <span class="menu-bar-icon-container fa fa-trophy"></span>
+    </div> -->
+    <div class="menu-bar-item-container" [ngClass]="isOptionSelected(menuBarOptions.facilities) ? 'menu-bar-item-selected' : ''" (click)="menuBarItemClickHandler(menuBarOptions.facilities)" title="Facilities">
+        <span class="menu-bar-icon-container fa fa-building"></span>
+    </div>
+    <div class="menu-bar-item-container" [ngClass]="isOptionSelected(menuBarOptions.research) ? 'menu-bar-item-selected' : ''" (click)="menuBarItemClickHandler(menuBarOptions.research)" title="Reserch / Consultancy">
+        <span class="menu-bar-icon-container fa fa-search"></span>
+    </div>
+    <div class="menu-bar-item-container" [ngClass]="isOptionSelected(menuBarOptions.achivements) ? 'menu-bar-item-selected' : ''" (click)="menuBarItemClickHandler(menuBarOptions.achivements)" title="Achivements">
+        <span class="menu-bar-icon-container fa fa-trophy"></span>
+    </div>
+    <div class="menu-bar-item-container" [ngClass]="isOptionSelected(menuBarOptions.placements) ? 'menu-bar-item-selected' : ''" (click)="menuBarItemClickHandler(menuBarOptions.placements)" title="Placements">
+        <span class="menu-bar-icon-container fa fa-graduation-cap" style="right: 20%;"></span>
+    </div>
+    <div class="menu-bar-item-container" [ngClass]="isOptionSelected(menuBarOptions.events) ? 'menu-bar-item-selected' : ''" (click)="menuBarItemClickHandler(menuBarOptions.events)" title="Events">
+        <span class="menu-bar-icon-container fa fa-calendar"></span>
+    </div>
+    <div class="menu-bar-item-container" [ngClass]="isOptionSelected(menuBarOptions.contact) ? 'menu-bar-item-selected' : ''" (click)="menuBarItemClickHandler(menuBarOptions.contact)" title="Contact">
+        <span class="menu-bar-icon-container fa fa-phone"></span>
+    </div>
+    <!-- <div *ngIf="isAdminLoggedIn()" class="menu-bar-item-container" [ngClass]="isOptionSelected(menuBarOptions.securityRights) ? 'menu-bar-item-selected' : ''" (click)="menuBarItemClickHandler(menuBarOptions.securityRights)" title="Security Rights">
+        <span class="menu-bar-icon-container fa fa-lock"></span>
+    </div>
+    <div *ngIf="!isUserLogin()" class="menu-bar-item-container" (click)="loginClickHandler()" title="Login">
+        <span class="menu-bar-icon-container fa fa-sign-in"></span>
+    </div>
+    <div *ngIf="isUserLogin()" class="menu-bar-item-container" (click)="logoutClickHandler()" title="Logout">
+        <span class="menu-bar-icon-container fa fa-sign-out"></span>
+    </div> -->
+</div>

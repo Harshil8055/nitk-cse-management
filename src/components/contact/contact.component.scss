@@ -1,0 +1,71 @@
+@import '../../styles.scss';
+
+.contact-component-container {
+    height: 38rem;
+    .contact-card-container {
+        height: 100%;
+        width: 75%;
+        margin: auto;
+        display: flex;
+        box-shadow: 0rem 0rem 0.25rem 0.1rem rgba(34, 35, 36, 0.2);
+        .contact-form-wrapper-container {
+            width: 70%;
+            padding: 2rem;
+            .contact-form-container {
+                width: 100%;
+                .contact-form-field-container {
+                    display: flex;
+                    padding: 1rem;
+                    .contact-field-label-container {
+                        width: 15%;
+                        align-self: center;
+                        text-align: center;
+                        font-weight: bold;
+                    }
+                    .contact-field-value-container {
+                        width: 85%;
+                    }
+                }
+            }
+            .contact-form-submit-button-container {
+                text-align: center;
+            }
+        }
+        .contact-info-container {
+            padding: 2rem;
+            width: 30%;
+            background-image: linear-gradient(250deg, rgba(152, 119, 234, 0.7) -25%, $primaryColor 100%);
+            background-repeat: repeat-x;
+            color: white;
+            .contact-info-header-container {
+                font-size: 1.25rem;
+            }
+            .contact-info-detail-container {
+                padding: 1rem 0rem;
+            }
+            .contact-info-icon-container {
+                margin-right: 0.5rem;
+                margin-top: 0.15rem;
+                width: 8%;
+            }
+            .contact-info-data-container {
+                word-break: break-word;
+                width: 92%;
+            }
+            .contact-social-media-wrapper-container {
+                padding: 2rem;
+                font-size: 1.5rem;
+                .contact-social-media-container {
+                    display: flex;
+                    justify-content: center;
+                }
+                .contact-info-icon-container {
+                    margin-right: 2rem;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}

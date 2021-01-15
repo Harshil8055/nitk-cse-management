@@ -1,0 +1,31 @@
+<div class="security-rights-list-component">
+    <div class="display-flex">
+        <div class="security-rights-list-data-container">
+            <div *ngFor="let entity of securityRightEntitys">
+                <div class="entity-name-container" [ngClass]="isSelectedEntity(entity) ? 'entity-selected-container' : ''"
+                    (click)="entityNameClickHandler(entity)">
+                    {{entity?.name}}
+                </div>
+            </div>
+        </div>
+        <div *ngIf="selectedEntity && securityRightDetails" class="entity-detail-container panel-container">
+            <div class="entity-detail-header-container panel-header-container">
+                <div class="display-flex">
+                    <div class="entity-detail-entity-name-container">{{selectedEntity?.name}}</div>
+                    <div class="entity-detail-save-container action-icon-container fa fa-save" (click)="securityRightSaveClickHandler()"></div>
+                </div>
+            </div>
+            <div class="entity-detail-body-container panel-body-container">
+                <div *ngFor="let screen of securityRightDetails.screen" style="padding-bottom: 0.5rem;">
+                    <div class="display-flex">
+                        <div class="entity-detail-screen-name-container">{{screen.name}}</div>
+                        <div *ngFor="let permission of screen.permission" class="entity-detail-permission-container">
+                            <input type="checkbox" (change)="permissionChangeHandler(permission, screen)" [checked]="permission.value"/>
+                            <span>{{permission.name}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

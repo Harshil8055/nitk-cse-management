@@ -1,0 +1,159 @@
+<div class="courses-component-container component-section-container">
+    <div style="margin-bottom: 0.5rem;">A detailed list of subjects for the undergraduate and postgraduate courses, the number of credits to be earned and other details can be found here.</div>
+    <div class="link-container" style="margin-bottom: 0.5rem;"><a target = "blank" href = "https://www.nitk.ac.in/Curriculum">Undergraduate and Postgraduate curriculum</a></div>
+    <app-tab-selection [config]="tabSelectionConfig" (eTabClick)=tabClickHandler($event)></app-tab-selection>
+    <div>
+        <div *ngIf="selectedTab && selectedTab === 'UNDERGRADUATE'">
+            <ng-container *ngTemplateOutlet="coursesTemplate"></ng-container>
+        </div>
+        <div *ngIf="selectedTab && selectedTab === 'POSTGRADUATE'">
+            <ng-container *ngTemplateOutlet="coursesTemplate"></ng-container>
+        </div>
+        <div *ngIf="selectedTab && selectedTab === 'DOCTORAL'">
+            <ng-container *ngTemplateOutlet="coursesTemplate"></ng-container>
+        </div>
+    </div>
+</div>
+
+<ng-template #coursesTemplate>
+    <div class="course-template-container">
+        <div *ngIf="isUnderGranduateCourseSelected" class="course-filter-container">
+            <div class="filter-label-container">
+                Semester :
+            </div>
+            <div class="filter-dropdown-container">
+                <select (change)="semesterChangeHandler($event)">
+                    <option value="All">All</option>
+                    <option value="First">First</option>
+                    <option value="Second">Second</option>
+                    <option value="Third">Third</option>
+                    <option value="Fourth">Fourth</option>
+                    <option value="Fifth">Fifth</option>
+                    <option value="Sixth">Sixth</option>
+                    <option value="Seventh">Seventh</option>
+                    <option value="Eighth">Eighth</option>
+                </select>
+            </div>
+            <div class="filter-label-container">
+                Category :
+            </div>
+            <div class="filter-dropdown-container">
+                <select (change)="categoryChangeHandler($event)">
+                    <option value="All">All</option>
+                    <option value="ESC">Engineering Science Core (ESC)</option>
+                    <option value="PC">Programme Core (PC)</option>
+                    <option value="PSE">Programme Specific Electives (PSE)</option>
+                    <option value="Fifth">Programme Major Project (PMP)</option>
+                </select>
+            </div>
+        </div>
+        <div *ngIf="isPostGranduateCourseSelected" class="course-filter-container">
+            <div class="filter-label-container">
+                Programme :
+            </div>
+            <div class="filter-dropdown-container">
+                <select (change)="programmeChangeHandler($event)">
+                    <option value="All">All</option>
+                    <option value="CSE">M.Tech (CSE)</option>
+                    <option value="CSE-IS">M.Tech (CSE-IS)</option>
+                </select>
+            </div>
+            <div class="filter-label-container">
+                Semester :
+            </div>
+            <div class="filter-dropdown-container">
+                <select (change)="semesterChangeHandler($event)">
+                    <option value="All">All</option>
+                    <option value="First">First</option>
+                    <option value="Second">Second</option>
+                    <option value="Third">Third</option>
+                    <option value="Fourth">Fourth</option>
+                </select>
+            </div>
+            <div class="filter-label-container">
+                Category :
+            </div>
+            <div class="filter-dropdown-container">
+                <select (change)="categoryChangeHandler($event)">
+                    <option value="All">All</option>
+                    <option value="Ele">Elective Courses (Ele)</option>
+                    <option value="PC">Programme Core (PC)</option>
+                </select>
+            </div>
+        </div>
+        <div class="course-data-container">
+            <div class="course-list-container">
+                <div *ngFor="let courseDetail of selectedCourseType">
+                    <div class="course-list-name-container" [ngClass]="courseDetail.isSelected ? 'course-selected-container' : ''"
+                        (click)="courseNameClickHandler(courseDetail)">
+                        {{courseDetail?.name}}
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="selectedCourse" class="course-detail-container">
+                <div class="panel-container">
+                    <div class="panel-header-container">
+                        {{selectedCourse?.name}}
+                    </div>
+                    <div *ngIf="selectedCourse" class="panel-body-container">
+                        <div *ngIf="selectedCourse.name" class="course-detail-name-container">
+                            <span class="course-detail-label-container">Course Name :</span>
+                            <span class="course-detail-value-container">{{selectedCourse.name}} ({{selectedCourse.code}})</span>
+                        </div>
+                        <div *ngIf="selectedCourse.programme" class="course-detail-programme-container">
+                            <span class="course-detail-label-container">Programme :</span>
+                            <span class="course-detail-value-container">
+                                {{selectedCourse.programme}}
+                                <span *ngIf="selectedCourse.programmeCode"> ({{selectedCourse.programmeCode}})</span>
+                            </span>
+                        </div>
+                        <div *ngIf="selectedCourse.semester" class="course-detail-semester-container">
+                            <span class="course-detail-label-container">Semester :</span>
+                            <span class="course-detail-value-container">{{selectedCourse.semester}}</span>
+                        </div>
+                        <div *ngIf="selectedCourse.category" class="course-detail-category-container">
+                            <span class="course-detail-label-container">Category :</span>
+                            <span class="course-detail-value-container">
+                                {{selectedCourse.category}}
+                                <span *ngIf="selectedCourse.categoryCode"> ({{selectedCourse.categoryCode}})</span>
+                            </span>
+                        </div>
+                        <div *ngIf="selectedCourse.credits" class="course-detail-credits-container">
+                            <span class="course-detail-label-container">Credits (L-T-P) :</span>
+                            <span class="course-detail-value-container">{{selectedCourse.credits}}</span>
+                        </div>
+                        <div *ngIf="selectedCourse.content" class="course-detail-content-container">
+                            <div class="course-detail-label-container">Content :</div>
+                            <div class="course-detail-value-container">{{selectedCourse.content}}</div>
+                        </div>
+                        <div *ngIf="selectedCourse.references && selectedCourse.references.length" class="course-detail-references-container">
+                            <div class="course-detail-label-container">References :</div>
+                            <ol>
+                                <div *ngFor="let reference of selectedCourse.references" class="course-detail-value-container">
+                                    <li>{{reference}}</li>
+                                </div>
+                            </ol>
+                        </div>
+                        <div *ngIf="selectedCourse.department" class="course-detail-department-container">
+                            <span class="course-detail-label-container">Department :</span>
+                            <span class="course-detail-value-container">{{selectedCourse.department}}</span>
+                        </div>
+                        <div *ngIf="selectedCourse.instructor && selectedCourse.instructor.length" class="course-detail-instructor-container">
+                            <div class="course-detail-label-container">Instructor :</div>
+                            <div *ngFor="let instructor of selectedCourse.instructor" class="course-detail-value-container">
+                                {{instructor}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="!selectedCourse" class="course-not-found-container">
+                <div class="panel-container">
+                    <div class="panel-body-container course-not-found-message-container">
+                        No Course available with selected filters.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

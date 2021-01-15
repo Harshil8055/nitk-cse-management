@@ -1,0 +1,49 @@
+@import '../../../styles.scss';
+
+.security-rights-list-component {
+    padding: 0rem 1rem;
+    .security-rights-list-data-container {
+        width: 20%;
+        padding-right: 0.5rem;
+        .entity-name-container {
+            cursor: pointer;
+            padding: 0.2rem 0rem;
+            &:hover {
+                color: $primaryColor;
+            }
+            &.entity-selected-container {
+                color: $primaryColor;
+            }
+        }
+    }
+    .entity-detail-container {
+        width: 80%;
+        .entity-detail-header-container {
+            padding: 1rem;
+            .entity-detail-entity-name-container {
+                width: 95%;
+            }
+            .entity-detail-save-container {
+                width: 5%;
+                text-align: right;
+            }
+        }
+        .entity-detail-body-container {
+            padding-left: 2rem;
+            .entity-detail-screen-name-container {
+                width: 10%;
+                &::after {
+                    content: " :";
+                }
+            }
+            .entity-detail-permission-container {
+                width: 20%;
+                display: flex;
+                input {
+                    width: 1rem;
+                    margin: 0rem 0.5rem 0.5rem 0rem;
+                }
+            }
+        }
+    }
+}

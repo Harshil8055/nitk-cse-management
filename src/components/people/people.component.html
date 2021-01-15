@@ -1,0 +1,23 @@
+<div class="people-component-container component-section-container">
+    <app-tab-selection [config]="tabSelectionConfig" (eTabClick)=tabClickHandler($event)></app-tab-selection>
+    <div>
+        <div *ngIf="selectedTab && selectedTab === 'FACULTY'">
+            <app-people-list [apiSubPath]="'teacherdata'"></app-people-list>
+        </div>
+        <div *ngIf="selectedTab && selectedTab === 'ADJUNT_FACULTY'">
+            <app-people-list [apiSubPath]="'adjunctfaculty'"></app-people-list>
+        </div>
+        <div *ngIf="selectedTab && selectedTab === 'ADHOC_FACULTY'">
+            <app-people-list [apiSubPath]="'adhocfaculty'"></app-people-list>
+        </div>
+        <div *ngIf="selectedTab && selectedTab === 'STAFF'">
+            <app-people-list [apiSubPath]="'staffdata'"></app-people-list>
+        </div>
+        <div *ngIf="selectedTab && selectedTab === 'PROJECT_STAFF'">
+            <app-people-list [apiSubPath]="'projectdata'"></app-people-list>
+        </div>
+        <div *ngIf="selectedTab && selectedTab === 'RESEARCH_SCHOLARS'">
+            <app-people-list [apiSubPath]="'researchdata'"></app-people-list>
+        </div>
+    </div>
+</div>

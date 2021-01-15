@@ -1,0 +1,30 @@
+<div class="people-info-card-container" (click)="cardClickHandler()">
+    <div class="people-photo-container">
+        <img src={{peopleDetail.photoSrc}} alt="image"/>
+    </div>
+    <div class="people-details-container">
+        <div class="people-name-container">
+            {{peopleDetail.name}}
+        </div>
+        <div *ngIf="peopleDetail.phone" class="people-phone-container display-flex">
+            <div class="people-icon-container fa fa-phone"></div>
+            <div class="people-data-container">{{peopleDetail.phone}}</div>
+        </div>
+        <div *ngIf="peopleDetail.email" class="people-email-container display-flex">
+            <div class="people-icon-container fa fa-at"></div>
+            <div class="people-data-container">{{peopleDetail.email}}</div>
+        </div>
+        <div *ngIf="peopleDetail.supervisor" class="people-supervisor-container display-flex">
+            <div class="people-icon-container fa fa-sitemap"></div>
+            <div class="people-data-container">{{peopleDetail.supervisor}}</div>
+        </div>
+        <div *ngIf="peopleDetail.areaOfInterest" class="people-areaOfInterest-container display-flex">
+            <div class="people-icon-container fa fa-bookmark"></div>
+            <div class="people-data-container">{{peopleDetail.areaOfInterest}}</div>
+        </div>
+        <div *ngIf="peopleDetail.category" class="people-category-container display-flex">
+            <div class="people-icon-container fa fa-briefcase"></div>
+            <div class="people-data-container">{{peopleDetail.category}}</div>
+        </div>
+    </div>
+</div>

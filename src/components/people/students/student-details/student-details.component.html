@@ -1,0 +1,32 @@
+<div class="student-detail-component-container" *ngIf="studentList && studentList.length">
+    <div id="studentTable">
+        <table class="table-container">
+            <thead class="table-header-container">
+                <th class="table-first-column-container">Serial No.</th>
+                <th class="table-second-column-container">Roll No.</th>
+                <th class="table-third-column-container">Name</th>
+                <th class="table-fourth-column-container">
+                    <span class="action-icon-container fa fa-print" (click)="printClickHandler($event)"></span>
+                </th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of studentList">
+                    <td class="table-first-column-container">{{row.serialNo}}</td>
+                    <td class="table-second-column-container">{{row.rollNo}}</td>
+                    <td class="table-third-column-container">
+                        <span *ngIf="!row.isEditMode ">{{row.name}}</span>
+                        <span *ngIf="row.isEditMode"><input style="width: 50%;" type="text" [(ngModel)]="row.name"></span>
+                    </td>
+                    <td class="table-fourth-column-container">
+                        <span>
+                            <span *ngIf="isStudentEditPermissionAvailable(row)" class="action-icon-container fa fa-edit" (click)="editClickHandler(row)"></span>
+                            <span *ngIf="row.isEditMode" class="action-icon-container fa fa-save" (click)="saveClickHandler(row)"></span>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>

@@ -1,0 +1,60 @@
+@import '../../styles.scss';
+
+.marks-component-container {
+    .marks-filter-container {
+        .filter-label-container {
+            display: inline-block;
+            padding-right: 0.5rem;
+            font-weight: bold;
+        }
+        .filter-dropdown-container {
+            display: inline-block;
+            select {
+                width: 15rem;
+            }
+        }
+    }
+    .marks-details-container {
+        padding-right: 0.5rem;
+        width: 80%;
+        margin: auto;
+        .mark-details-action-container {
+            text-align: right;
+            padding: 0.5rem 0rem;
+        }
+        table, th, td {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 0.3rem 0rem;
+        }
+        tbody {
+            background-image: linear-gradient(250deg, rgba(152, 119, 234, 0.7) -25%, $primaryColor 100%);
+            background-repeat: repeat-x;
+            color: white;
+        }
+        .table-container {
+            box-shadow: 0rem 0rem 0.25rem 0.1rem rgba(34, 35, 36, 0.2);
+            .table-header-container {
+                padding: 0.5rem 0rem;
+            }
+            .table-first-column-container {
+                width: 10%;
+                text-align: center;
+            }
+            .table-second-column-container {
+                width: 20%;
+                text-align: center;
+            }
+            .table-third-column-container {
+                width: 50%;
+                text-align: center;
+            }
+            .table-fourth-column-container {
+                width: 20%;
+                text-align: center;
+            }
+        }
+    }
+}

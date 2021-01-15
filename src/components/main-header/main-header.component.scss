@@ -1,0 +1,45 @@
+@import '../../styles.scss';
+
+@keyframes slideInFromTop {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+}
+
+.main-header-component-container {
+    animation: 1s ease-out 0s 1 slideInFromTop;
+    display: flex;
+    padding: 0.5rem;
+    color: white;
+    box-shadow: 0rem 0rem 0.12rem 0.18rem rgba(34, 35, 36, 0.2);
+    .nitk-logo-container {
+        width: 4rem;
+        height: 4rem;
+        cursor: pointer;
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+    .main-header-title-container {
+        width: 52%;
+        margin: auto;
+        padding-left: 0.5rem;
+        cursor: pointer;
+        .main-header-collage-name-container {
+            color: black;
+        }
+        .main-header-branch-name-container {
+            font-size: 2rem;
+            color: $primaryColor;
+            font-weight: bold;
+        }
+    }
+    .main-header-menu-bar-container {
+        width: 58%;
+        margin: auto;
+    }
+}

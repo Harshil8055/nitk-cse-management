@@ -1,0 +1,14 @@
+<div class="courses-component-container component-section-container">
+    <app-tab-selection [config]="tabSelectionConfig" (eTabClick)=tabClickHandler($event)></app-tab-selection>
+    <div>
+        <div *ngIf="selectedTab && selectedTab === 'WORKSHOPS'">
+            <app-event-list [apiSubPath]="'events'"></app-event-list>
+        </div>
+        <!-- <div *ngIf="selectedTab && selectedTab === 'CONFERENCES'">
+            <app-event-list [apiSubPath]="'events'"></app-event-list>
+        </div>
+        <div *ngIf="selectedTab && selectedTab === 'NEWS'">
+            <app-event-list [apiSubPath]="'events'"></app-event-list>
+        </div> -->
+    </div>
+</div>

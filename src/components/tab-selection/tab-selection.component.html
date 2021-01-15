@@ -1,0 +1,8 @@
+<div class="tab-selection-container" *ngIf="config && config.length">
+    <div *ngFor="let tabConfig of config">
+        <div *ngIf="tabConfig && tabConfig.name && tabConfig.code" class="tab-selection-item-container" (click)="tabItemClickHandler(tabConfig.code)"
+            [ngClass]="selectedTab && selectedTab === tabConfig.code ? 'tab-item-selected' : ''">
+            {{tabConfig.name}}
+        </div>
+    </div>
+</div>

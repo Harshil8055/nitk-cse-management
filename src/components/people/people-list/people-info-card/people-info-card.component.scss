@@ -1,0 +1,56 @@
+@import '../../../../styles.scss';
+
+$cardWidth: 16rem;
+
+@keyframes fadeInAnimation { 
+    0% { 
+        opacity: 0; 
+    } 
+    100% { 
+        opacity: 1; 
+    } 
+}
+
+.people-info-card-container {
+    animation: 1s ease-out 0s 1 fadeInAnimation;
+    box-shadow: 0rem 0rem 0.25rem 0.1rem rgba(34, 35, 36, 0.2);
+    width: $cardWidth;
+    position: relative;
+    margin: 0.5rem 2.5rem 0.5rem 0rem;
+    height: 95%;
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0rem 0rem 0.25rem 0.1rem rgba(34, 35, 36, 0.5);
+    }
+    .people-photo-container {
+        // background-image: linear-gradient(250deg, rgba(152, 119, 234, 0.7) -25%, $primaryColor 100%);
+        // background-repeat: repeat-x;
+        img {
+            height: 16rem;
+            width: 100%;
+        }
+    }
+    .people-details-container {
+        padding: 1rem 0.5rem 0.5rem 0.5rem;
+        font-size: 0.9rem;
+        .people-name-container {
+            width: 80%;
+            background-color: #c54041;
+            color: white;
+            text-align: center;
+            padding: 0.4rem 0.2rem;
+            position: absolute;
+            top: 15rem;
+            left: 1.4rem;
+            font-weight: bold;
+        }
+        .people-icon-container {
+            margin-right: 0.5rem;
+            // align-self: center;
+            margin-top: 0.15rem;
+        }
+        .people-data-container {
+            word-break: break-word;
+        }
+    }
+}

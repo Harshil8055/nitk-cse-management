@@ -1,0 +1,47 @@
+<div class="event-list-component-cotainer">
+    <div class="event-filter-container">
+        <div class="filter-label-container">
+            Status :
+        </div>
+        <div class="filter-dropdown-container">
+            <select (change)="statusChangeHandler($event)">
+                <option value="All">All</option>
+                <option value="completed">Completed</option>
+                <option value="upcoming">Upcoming</option>
+                <option value="ongoing">Ongoing</option>
+            </select>
+        </div>
+    </div>
+    <div *ngFor="let event of eventList" class="event-detail-wrapper-container">
+        <div class="event-detail-container">
+            <div class="event-title-container" (click)="eventClickHandler(event)">
+                <span>{{event.title}}</span>
+                <span class="font-style-italic"> ({{event.status}})</span>
+            </div>
+            <div *ngIf="event.isSelected" class="event-info-wrapper-container">
+                <div class="event-info-container">
+                    <div *ngIf="event.description" class="event-description-container event-data-wrapper-container">
+                        <div class="event-label-container">Description</div>
+                        <div class="event-data-container">{{event.description}}</div>
+                    </div>
+                    <div *ngIf="event.organizer" class="event-organizer-container event-data-wrapper-container">
+                        <div class="event-label-container">Organizer</div>
+                        <div class="event-data-container">{{event.organizer}}</div>
+                    </div>
+                    <div class="event-date-container event-data-wrapper-container">
+                        <div class="event-label-container">Date</div>
+                        <div class="event-data-container">from {{event.startDate}} to {{event.endDate}} for {{event.duration}} days</div>
+                    </div>
+                    <div *ngIf="event.area" class="event-area-container event-data-wrapper-container">
+                        <div class="event-label-container">Area</div>
+                        <div class="event-data-container">{{event.area}}</div>
+                    </div>
+                    <div *ngIf="event.place" class="event-place-container event-data-wrapper-container">
+                        <div class="event-label-container">Place</div>
+                        <div class="event-data-container">{{event.place}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

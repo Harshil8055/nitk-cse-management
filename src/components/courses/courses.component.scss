@@ -1,0 +1,56 @@
+@import '../../styles.scss';
+
+.courses-component-container {
+    .course-template-container {
+        .course-filter-container {
+            .filter-label-container {
+                display: inline-block;
+                padding-right: 0.5rem;
+                font-weight: bold;
+            }
+            .filter-dropdown-container {
+                display: inline-block;
+                select {
+                    width: 15rem;
+                }
+            }
+        }
+        .course-data-container {
+            display: flex;
+            .course-list-container {
+                width: 25%;
+                padding-right: 0.5rem;
+                .course-list-name-container {
+                    cursor: pointer;
+                    padding: 0.2rem 0rem;
+                    &:hover {
+                        color: $primaryColor;
+                    }
+                    &.course-selected-container {
+                        color: $primaryColor;
+                    }
+                }
+            }
+            .course-detail-container {
+                width: 75%;
+                .course-detail-label-container {
+                    font-weight: bold;
+                    padding-right: 0.5rem;
+                }
+                div {
+                    &.course-detail-value-container {
+                        padding-left: 2rem;
+                    }
+                }
+            }
+        }
+        .course-not-found-container {
+            .course-not-found-message-container {
+                height: 26rem;
+                font-size: 2rem;
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+}

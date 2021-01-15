@@ -1,0 +1,80 @@
+@import '../styles.scss';
+
+.login-component-container {
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(250deg, rgba(152, 119, 234, 0.7) -25%, $primaryColor 100%);
+    background-repeat: repeat-x;
+    color: white;
+    display: flex;
+    .login-component-left-container {
+        width: 60%;
+        position: relative;
+        .nitk-logo-container {
+            img {
+                height: 20rem;
+                width: 20rem;
+                position: absolute;
+                top: 24%;
+                left: 30%;
+            }
+            div {
+                position: absolute;
+                top: 69%;
+                left: 12%;
+                font-size: 2rem;
+                color: black;
+            }
+        }
+    }
+    .login-component-right-container {
+        width: 40%;
+        position: relative;
+        .login-component-card-container {
+            background-color: white;
+            width: 70%;
+            height: 70%;
+            position: absolute;
+            box-shadow: 0rem 0rem 0.25rem 0.1rem rgba(34, 35, 36, 0.5);
+            top: 7rem;
+            border-radius: 0.3rem;
+            .login-photo-container {
+                height: 50%;
+                position: relative;
+                img {
+                    position: absolute;
+                    border-radius: 50%;
+                    right: 23%;
+                    height: 15rem;
+                    top: 9%;
+                    width: 15rem;
+                    box-shadow: 0rem 0rem 0.25rem 0.1rem rgba(34, 35, 36, 0.5);
+                }
+            }
+            .login-form-container {
+                height: 50%;
+                margin: 1rem;
+                .login-form-control-container {
+                    padding: 1rem 0rem;
+                    input {
+                        font-size: 1.5rem;
+                        width: 98%;
+                        &::placeholder {
+                            opacity: 0.3;
+                        }
+                    }
+                }
+                .incurrect-credential-container {
+                    // padding: 0.5rem 0rem;
+                    height: 1rem;
+                    text-align: center;
+                    color: red;
+                }
+                button {
+                    width: 96%;
+                    font-size: 1.25rem;
+                }
+            }
+        }
+    }
+}

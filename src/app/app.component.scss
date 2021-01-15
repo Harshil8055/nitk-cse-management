@@ -1,0 +1,184 @@
+@import '../styles.scss';
+
+@keyframes fadeInAnimation { 
+    0% { 
+        opacity: 0.5; 
+    } 
+    100% { 
+        opacity: 1; 
+    } 
+}
+
+@keyframes shake {
+    0% { transform: translate(2px, 0px) }
+    10% { transform: translate(-2px, 0px) }
+    20% { transform: translate(2px, 0px) }
+    30% { transform: translate(-2px, 0px) }
+    40% { transform: translate(2px, 0px) }
+    50% { transform: translate(-2px, 0px) }
+    60% { transform: translate(2px, 0px) }
+    70% { transform: translate(-2px, 0px) }
+    80% { transform: translate(2px, 0px) }
+    90% { transform: translate(-2px, 0px) }
+    100% { transform: translate(2px, 0px) }
+}
+
+.invalid-control {
+    &:focus {
+        animation: shake 1s;
+    }
+}
+
+.panel-container {
+    box-shadow: 0rem 0rem 0.25rem 0.1rem rgba(34, 35, 36, 0.2);
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    background-image: linear-gradient(250deg, rgba(152, 119, 234, 0.7) -25%, $primaryColor 100%);
+    background-repeat: repeat-x;
+    color: white;
+    .panel-header-container {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+    .panel-body-container {
+        padding-top: 0.5rem;
+    }
+}
+
+.display-flex {
+    display: flex;
+}
+
+.font-style-italic {
+    font-style: italic;
+}
+
+.component-section-container {
+    padding: 1rem;
+    overflow: auto;
+    height: 38rem;
+    animation: 1s ease-out 0s 1 fadeInAnimation;
+}
+
+ul {
+    margin: 0rem;
+    padding-inline-start: 1rem;
+}
+
+ol {
+    margin: 0rem;
+    padding-inline-start: 1rem;
+}
+
+a {
+    color: darkblue;
+    text-decoration: none;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.header-title-container {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.link-container {
+    color: darkblue;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 0.4rem;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+select {
+    border-color: $primaryColor;
+    width: 100%;
+    border: none;
+    border-bottom: 0.1rem solid $primaryColor;
+    height: 1.5rem;
+    margin: 0rem 1.5rem 0.5rem 0rem;
+    font-family: "Montserrat";
+    background-color: transparent;
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+input {
+    border-color: $primaryColor;
+    width: 100%;
+    border: none;
+    border-bottom: 0.1rem solid $primaryColor;
+    height: 1.5rem;
+    margin: 0rem 1.5rem 0.5rem 0rem;
+    font-family: "Montserrat";
+    background-color: transparent;
+    &:focus {
+        outline: none;
+    }
+}
+
+textarea {
+    border-color: $primaryColor;
+    width: 100%;
+    border: none;
+    border-bottom: 0.1rem solid $primaryColor;
+    height: 1.5rem;
+    margin: 0rem 1.5rem 0.5rem 0rem;
+    font-family: "Montserrat";
+    resize: vertical;
+    min-height: 6rem;
+    background-color: transparent;
+    &:focus {
+        outline: none;
+    }
+}
+
+.required-field {
+    &::after {
+        content: ' *';
+        color: red;
+    }
+}
+
+button {
+    background-color: #c54041;
+    padding: 1rem;
+    border-radius: 2rem;
+    color: white;
+    border: none;
+    margin: 0.5rem;
+    width: 10rem;
+    box-shadow: 0rem 0rem 0.25rem 0.1rem rgba(34, 35, 36, 0.2);
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0rem 0rem 0.25rem 0.1rem rgba(34, 35, 36, 0.5);
+    }
+}
+
+.action-icon-container {
+    padding-right: 0.5rem;
+    &:hover {
+        cursor: pointer;
+    }
+}

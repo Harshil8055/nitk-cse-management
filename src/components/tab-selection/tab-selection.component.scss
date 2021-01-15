@@ -1,0 +1,17 @@
+@import '../../styles.scss';
+
+.tab-selection-container {
+    display: flex;
+    box-shadow: 0rem 0rem 0.25rem 0.1rem rgba(34, 35, 36, 0.2);
+    margin-bottom: 1rem;
+    .tab-selection-item-container {
+        padding: 0.5rem 1rem;
+        &:hover {
+            cursor: pointer;
+        }
+        &.tab-item-selected {
+            border-bottom: 0.2rem solid $primaryColor;
+            color: $primaryColor;
+        }
+    }
+}

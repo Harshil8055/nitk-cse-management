@@ -1,0 +1,230 @@
+<div class="people-detail-component-container component-section-container">
+    <div *ngIf="!openInEditMode && peopleDetail" class="people-read-only-container">
+        <div class="people-common-detail-wrapper-container panel-container">
+            <div class="people-personal-info-container">
+                <div *ngIf="peopleDetail.name" class="panel-header-container">
+                    <span style="padding-right: 0.5rem;">{{peopleDetail.name}}</span>
+                    <!-- <span *ngIf="isPermissionAvailable('')" class="action-icon-container fa fa-edit" (click)="peopleEditClickHandler()"></span>
+                    <span *ngIf="isPermissionAvailable('')" class="action-icon-container fa fa-trash" (click)="peopleDeleteClickHandler()"></span> -->
+                </div>
+                <div class="panel-body-container">
+                    <div class="people-detail-photo-container">
+                        <img src={{peopleDetail.photo}} alt="image"/>
+                    </div>
+                    <div *ngIf="peopleDetail.designation" class="people-common-detail-container display-flex">
+                        <div class="people-common-detail-icon-container fa fa-address-card"></div>
+                        <div class="people-common-detail-data-container">{{peopleDetail.designation}}</div>
+                    </div>
+                    <div *ngIf="peopleDetail.dateOfJoining" class="people-common-detail-container display-flex">
+                        <div class="people-common-detail-icon-container fa fa-calendar"></div>
+                        <div class="people-common-detail-data-container">
+                            {{peopleDetail.dateOfJoining}}
+                            <span class="font-style-italic"> (Date Of Joining)</span>
+                        </div>
+                    </div>
+                    <div *ngIf="peopleDetail.email" class="people-common-detail-container display-flex">
+                        <div class="people-common-detail-icon-container fa fa-at"></div>
+                        <div class="people-common-detail-data-container">{{peopleDetail.email}}</div>
+                    </div>
+                    <div *ngIf="peopleDetail.phone" class="people-common-detail-container display-flex">
+                        <div class="people-common-detail-icon-container fa fa-phone"></div>
+                        <div class="people-common-detail-data-container">{{peopleDetail.phone}}</div>
+                    </div>
+                    <div *ngIf="peopleDetail.facebook || peopleDetail.linkedIN" class="people-common-detail-container display-flex">
+                        <div *ngIf="peopleDetail.facebook" class="people-common-detail-icon-container fa fa-facebook" style="cursor: pointer;"
+                            (click)="naviageToSocialMediaAccount(peopleDetail.facebook)">
+                        </div>
+                        <div *ngIf="peopleDetail.linkedIN" class="people-common-detail-icon-container fa fa-linkedin" style="cursor: pointer;"
+                            (click)="naviageToSocialMediaAccount(peopleDetail.linkedIN)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="peopleDetail.bTech || peopleDetail.mTech || peopleDetail.phd" class="people-academic-info-container">
+                <div class="panel-header-container">
+                    Academic Info
+                </div>
+                <div class="panel-body-container">
+                    <div *ngIf="peopleDetail.phd" class="people-common-detail-container display-flex">
+                        <div class="people-common-detail-data-container">{{peopleDetail.phd}}</div>
+                    </div>
+                    <div *ngIf="peopleDetail.mTech" class="people-common-detail-container display-flex">
+                        <div class="people-common-detail-data-container">{{peopleDetail.mTech}}</div>
+                    </div>
+                    <div *ngIf="peopleDetail.bTech" class="people-common-detail-container display-flex">
+                        <div class="people-common-detail-data-container">{{peopleDetail.bTech}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="peopleDetail.areaOfInterestInfo && peopleDetail.areaOfInterestInfo.length" class="people-area-of-interest-container panel-container">
+            <div class="panel-header-container">
+                Area of Interest
+            </div>
+            <div class="panel-body-container">
+                <ul>
+                    <li *ngFor="let aoi of peopleDetail.areaOfInterestInfo">{{aoi}}</li>
+                </ul>
+            </div>
+        </div>
+        <div *ngIf="peopleDetail.projectInfo && peopleDetail.projectInfo.length" class="people-project-wrapper-container panel-container">
+            <div class="panel-header-container">
+                Projects
+            </div>
+            <div class="panel-body-container">
+                <div *ngFor="let projectRole of peopleDetail.projectInfo" style="padding-bottom: 0.5rem; padding-left: 1rem;">
+                    <div *ngIf="projectRole.role !== 'null'" class="panel-header-container">
+                        {{projectRole.role}}
+                    </div>
+                    <div class="panel-body-container">
+                        <ol>
+                            <li *ngFor="let project of projectRole.projects">{{project}}</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="peopleDetail.publicationInfo && peopleDetail.publicationInfo.length" class="people-publication-wrapper-container panel-container">
+            <div class="panel-header-container">
+                Publications
+            </div>
+            <div class="panel-body-container">
+                <ol>
+                    <li *ngFor="let publication of peopleDetail.publicationInfo">{{publication}}</li>
+                </ol>
+            </div>
+        </div>
+        <div *ngIf="peopleDetail.achievementInfo && peopleDetail.achievementInfo.length" class="people-achievement-wrapper-container panel-container">
+            <div class="panel-header-container">
+                Achievements
+            </div>
+            <div class="panel-body-container">
+                <ol>
+                    <li *ngFor="let achievement of peopleDetail.achievementInfo">{{achievement}}</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="openInEditMode && peopleFormDetails">
+        <div class="people-form-container">
+            <div class="people-form-card-container">
+                <div class="header-title-container">
+                    <span style="padding-right: 0.5rem;">Personal Info</span>
+                    <span class="action-icon-container fa fa-save" (click)="saveClickHandler()"></span>
+                </div>
+                <div class="display-flex">
+                    <div class="people-form-personal-info-container">
+                        <div class="people-form-field-container">
+                            <div class="people-field-label-container required-field">Name</div>
+                            <div class="people-field-value-container">
+                                <input type="text" [(ngModel)]="peopleFormDetails.details.name" required />
+                            </div>
+                        </div>
+                        <div class="people-form-field-container">
+                            <div class="people-field-label-container required-field">Designation</div>
+                            <div class="people-field-value-container">
+                                <input type="text" [(ngModel)]="peopleFormDetails.details.designation" required />
+                            </div>
+                        </div>
+                        <div class="people-form-field-container">
+                            <div class="people-field-label-container required-field">Date of Joining</div>
+                            <div class="people-field-value-container">
+                                <input type="date" [(ngModel)]="peopleFormDetails.details.dateOfJoining" required />
+                            </div>
+                        </div>
+                        <div class="people-form-field-container">
+                            <div class="people-field-label-container required-field">Email</div>
+                            <div class="people-field-value-container">
+                                <input type="email" [(ngModel)]="peopleFormDetails.details.email" required />
+                            </div>
+                        </div>
+                        <div class="people-form-field-container">
+                            <div class="people-field-label-container required-field">Phone</div>
+                            <div class="people-field-value-container">
+                                <input type="number" [(ngModel)]="peopleFormDetails.details.phone" required />
+                            </div>
+                        </div>
+                        <div class="people-form-field-container">
+                            <div class="people-field-label-container">Facebook</div>
+                            <div class="people-field-value-container">
+                                <input type="text" [(ngModel)]="peopleFormDetails.details.facebook" />
+                            </div>
+                        </div>
+                        <div class="people-form-field-container">
+                            <div class="people-field-label-container">Linked-In</div>
+                            <div class="people-field-value-container">
+                                <input type="text" [(ngModel)]="peopleFormDetails.details.linkedIN" />
+                            </div>
+                        </div>
+                        <div class="people-form-field-container">
+                            <div class="people-field-label-container">Area of Interest</div>
+                            <div class="people-field-value-container">
+                                <textarea style="min-height: 3rem;" [(ngModel)]="peopleFormDetails.details.areaOfInterest" rows="4" cols="50"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="people-form-photo-container">
+                        <img src='assets\user-new-image.png' alt="image"/>
+                    </div>
+                </div>
+            </div>
+            <div class="people-form-card-container">
+                <div class="header-title-container">
+                    <span style="padding-right: 0.5rem;">Projects</span>
+                    <span class="action-icon-container fa fa-plus-circle" (click)="addProjectClickHandler()"></span>
+                </div>
+                <div *ngFor="let project of peopleFormDetails.projects; index as i" class="display-flex">
+                    <div style="width: 95%;">
+                        <div class="people-form-field-container">
+                            <div class="people-field-label-container">Role</div>
+                            <div class="people-field-value-container">
+                                <input type="text" [(ngModel)]="project.role" required/>
+                            </div>
+                        </div>
+                        <div class="people-form-field-container">
+                            <div class="people-field-label-container">Project</div>
+                            <div class="people-field-value-container">
+                                <input type="text" [(ngModel)]="project.project" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-icon-container fa fa-trash" style="align-self: center;" (click)=removeProjectClickHandler(i)></div>
+                </div>
+            </div>
+            <div class="people-form-card-container">
+                <div class="header-title-container">
+                    <span style="padding-right: 0.5rem;">Publications</span>
+                    <span class="action-icon-container fa fa-plus-circle" (click)="addPublicationClickHandler()"></span>
+                </div>
+                <div *ngFor="let publication of peopleFormDetails.publications; index as i" class="display-flex">
+                    <div style="width: 95%;">
+                        <div class="people-form-field-container">
+                            <div class="people-field-label-container">{{i + 1}}</div>
+                            <div class="people-field-value-container">
+                                <textarea style="min-height: 3rem;" [(ngModel)]="publication.description" rows="4" cols="50"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-icon-container fa fa-trash" style="align-self: center;" (click)="removePublicationClickHandler(i)"></div>
+                </div>
+            </div>
+            <div class="people-form-card-container">
+                <div class="header-title-container">
+                    <span style="padding-right: 0.5rem;">Achievements</span>
+                    <span class="action-icon-container fa fa-plus-circle" (click)="addAchievementClickHandler()"></span>
+                </div>
+                <div *ngFor="let achievement of peopleFormDetails.achievements; index as i" class="display-flex">
+                    <div style="width: 95%;">
+                        <div class="people-form-field-container">
+                            <div class="people-field-label-container">{{i + 1}}</div>
+                            <div class="people-field-value-container">
+                                <input type="text" [(ngModel)]="achievement.description" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-icon-container fa fa-trash" style="align-self: center;" (click)="removeAchievementClickHandler(i)"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,105 @@
+<div class="facilities-component-container component-section-container">
+    <app-tab-selection [config]="tabSelectionConfig" (eTabClick)=tabClickHandler($event)></app-tab-selection>
+    <div>
+        <div *ngIf="selectedTab && selectedTab === 'GENERAL_FACILITIES'">
+            <div style="padding-bottom: 0.5rem">
+                The department is equipped with state-of-the-art facilities to encourage research and to enable students to learn, understand and apply concepts.
+            </div>
+            <div class="panel-container">
+                <div class="panel-header-container">
+                    Meeting Room and Seminar Hall:
+                </div>
+                <div class="panel-body-container">
+                    The department has a meeting room equipped with LCD Projector and teleconferencing facilities. The department also has a Seminar Hall which has a seating capacity of 100. The seminar hall is used for conducting classes, seminars and workshops etc.
+                </div>
+            </div>
+            <div class="panel-container">
+                <div class="panel-header-container">
+                    Department Library:
+                </div>
+                <div class="panel-body-container">
+                    Apart from the central library with e-library facility, the CSE dept library also has about 2500 books.
+                </div>
+            </div>
+            <div class="panel-container">
+                <div class="panel-header-container">
+                    Computing Facility:
+                </div>
+                <div class="panel-body-container">
+                    The department has a data centre equipped with high end server systems.
+                </div>
+            </div>
+            <div class="panel-container">
+                <div class="panel-header-container">
+                    Networking: 
+                </div>
+                <div class="panel-body-container">
+                    Backbone connectivity consisting of 24 Port Brocade  make L3 Manageable distribution switch with  SMF modules,  besides more than 14 L3/L2 Network Switches, used for Network connectivity for the entire building . The LAN which in turn connected to the campus wide internet connectivity through Central Computer Centre of the Institute.
+                </div>
+            </div>
+            <div class="panel-container">
+                <div class="panel-header-container">
+                    Printer/Other Perpherals:
+                </div>
+                <div class="panel-body-container">
+                    There are more than 15 LaserJet Printers,  LCD Projector, 40” LCD TV, 65" LFD TV  etc for academic activities support.
+                </div>
+            </div>
+        </div>
+        <div *ngIf="selectedTab && selectedTab === 'LAB_FACILITIES'">
+            <div style="padding-bottom: 0.5rem">
+                The department has 11 labs which cater to the needs of all UG/PG students and Research scholars. The labs are accessible to the research scholars 24/7 and are equipped with the latest systems and peripherals like printers and scanners. Every system operates on WIndows and Linux operating systems and provide students access to a variety of softwares with internet(both wired and wireless) connectivity.
+            </div>
+            <div class="panel-container">
+                <div class="panel-header-container">
+                    UNDERGRADUATE LABORATORIES
+                </div>
+                <div class="panel-body-container">
+                    <ul>
+                        <li>Microprocessor Lab (L.No.101)</li>
+                        <li>UG Lab-1(L.No.401)</li>
+                        <li>UG Lab-2(L.No.407) </li>
+                        <li>UG Lab-3(L.No.501) </li>
+                        <li>UG Lab-4(L.No.506) </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel-container">
+                <div class="panel-header-container">
+                    POST GRADUATE LABORATORIES
+                </div>
+                <div class="panel-body-container">
+                    <ul>
+                        <li>Ist M.Tech Lab (L.No.302) </li>
+                        <li>PG Project Lab.(L.No.311)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel-container">
+                <div class="panel-header-container">
+                    RESEARCH LABORATORIES
+                </div>
+                <div class="panel-body-container">
+                    <ul>
+                        <li>Research Lab -1 (L.No.201)</li>
+                        <li>Research Lab -2 (L.No.301)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel-container">
+                <div class="panel-header-container">
+                    COMMON LABORATORIES(FOR PG/PhD/Other Research Project Labs)
+                </div>
+                <div class="panel-body-container">
+                    <ul>
+                        <li>Information Security Lab(L.No.310)</li>
+                        <li>Image and Speech Processing Lab(L.No.210)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- <div *ngIf="selectedTab && selectedTab === 'FACILITIES_MANAGEMENT'">
+            Facilities Management - For internal use only
+        </div> -->
+    </div>
+</div>

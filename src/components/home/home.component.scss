@@ -1,0 +1,32 @@
+.home-component-container {
+    display: flex;
+    .home-component-left-section-container{
+        // width: 70%;
+        .about-the-department-panel-container {
+            width: 50%;
+        }
+        .department-image-container {
+            width: 50%;
+            padding-left: 1rem;
+            height: 17rem;
+            img {
+                width: 100%;
+                height: 16rem;
+                margin-bottom: 1rem;
+                box-shadow: 0rem 0rem 0.25rem 0.1rem rgba(34, 35, 36, 0.2);
+                border-radius: 0.3rem;
+                color: white;
+                margin-bottom: 1rem;
+            }
+        }
+    }
+    .home-component-right-section-container {
+        width: 30%;
+        .news-and-upcoming-events-container {
+            padding: 1rem;
+            .upcoming-event-item-container {
+                padding: 0.5rem 0rem;
+            }
+        }
+    }
+}
