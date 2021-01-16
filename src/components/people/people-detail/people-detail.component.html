@@ -4,8 +4,8 @@
             <div class="people-personal-info-container">
                 <div *ngIf="peopleDetail.name" class="panel-header-container">
                     <span style="padding-right: 0.5rem;">{{peopleDetail.name}}</span>
-                    <!-- <span *ngIf="isPermissionAvailable('')" class="action-icon-container fa fa-edit" (click)="peopleEditClickHandler()"></span>
-                    <span *ngIf="isPermissionAvailable('')" class="action-icon-container fa fa-trash" (click)="peopleDeleteClickHandler()"></span> -->
+                    <span *ngIf="isPeopleEditPermissionAvailable()" class="action-icon-container fa fa-edit" (click)="peopleEditClickHandler()"></span>
+                    <span *ngIf="isPeopleDeletePermissionAvailable()" class="action-icon-container fa fa-trash" (click)="peopleDeleteClickHandler()"></span>
                 </div>
                 <div class="panel-body-container">
                     <div class="people-detail-photo-container">

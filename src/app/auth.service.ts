@@ -2,20 +2,35 @@ import { Injectable } from "@angular/core";
 import { ApiService } from "./api.service";
 
 export enum PermissionsList {
-
+    MARKSVIEW = 'MARKSVIEW',
+    MARKSCREATE = 'MARKSCREATE',
+    MARKSUPDATE = 'MARKSUPDATE',
+    MARKSPARTIALUPDATE = 'MARKSPARTIALUPDATE',
+    PEOPLEVIEW = 'PEOPLEVIEW',
+    PEOPLECREATE = 'PEOPLECREATE',
+    PEOPLEUPDATE = 'PEOPLEUPDATE',
+    PEOPLEPARTIALUPDATE = 'PEOPLEPARTIALUPDATE',
+    PEOPLEDELETE = 'PEOPLEDELETE',
+    STUDENTSVIEW = 'STUDENTSVIEW',
+    STUDENTSCREATE = 'STUDENTSCREATE',
+    STUDENTSUPDATE = 'STUDENTSUPDATE',
+    STUDENTSPARTIALUPDATE = 'STUDENTSPARTIALUPDATE'
 }
 
 export class UserDetailModel {
     id: number = null as any;
     name: string = null as any;
     role: string = null as any;
-    permission: PermissionsList[] = [];
+    permissions: PermissionsList[] = [];
 }
 
 @Injectable()
 export class AuthService {
 
-    private userDetail: UserDetailModel = null as any;
+    get userDetail(): UserDetailModel {
+        const response: string = window.localStorage.getItem('userDetails') as any;
+        return JSON.parse(response);
+    }
 
     constructor(
         private apiService: ApiService
@@ -26,7 +41,7 @@ export class AuthService {
     loginClickHandler(postModel: any) {
         return this.apiService.post('login', postModel).toPromise().then((response: any) => {
             if (response && response.status) {
-                this.userDetail = response;
+                window.localStorage.setItem('userDetails', JSON.stringify(response));
                 return response;
             } else {
                 return false;
@@ -43,7 +58,7 @@ export class AuthService {
     }
 
     isPermissionAvailable(permission: PermissionsList): boolean {
-        return this.isAdminLoggedIn() || !!(this.userDetail && this.userDetail.permission && this.userDetail.permission.length && this.userDetail.permission.includes(permission));
+        return this.isAdminLoggedIn() || !!(this.userDetail && this.userDetail.permissions && this.userDetail.permissions.length && this.userDetail.permissions.includes(permission));
     }
 
     isUserLoggedIn(): boolean {
@@ -51,11 +66,12 @@ export class AuthService {
     }
 
     resetUserDetails() {
-        this.userDetail = null as any;
+        // this.userDetail = null as any;
+        window.localStorage.setItem('userDetails', null as any);
     }
 
     isAdminLoggedIn(): boolean {
-        return this.isUserLoggedIn() && this.userDetail.role.toUpperCase() === 'ADMIN';
+        return this.isUserLoggedIn() && !!(this.userDetail && this.userDetail.role && this.userDetail.role.toUpperCase() === 'ADMIN');
     }
 
 }

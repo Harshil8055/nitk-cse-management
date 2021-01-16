@@ -1,12 +1,13 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
-import { AuthService } from 'src/app/auth.service';
+import { AuthService, PermissionsList } from 'src/app/auth.service';
 
 export class StudentDetailModel {
   id: number = null as any;
   rollNo: string = null as any;
   name: string = null as any;
   course: string = null as any;
+  userId: number = null as any;
   year: string = null as any;
   serialNo: number = null as any;
   isEditMode: boolean = false;
@@ -59,17 +60,23 @@ export class StudentDetailsComponent implements OnInit, OnChanges {
   }
 
   saveClickHandler(student: StudentDetailModel) {
-    student.isEditMode = false;
+    this.apiService.post('students', { id: student.id, name: student.name }).subscribe((response) => {
+      if (response && response.status) {
+        student.isEditMode = false;
+      } else {
+        alert("Something went wrong while saving student's data.");
+      }
+    });
   }
 
   isStudentEditPermissionAvailable(student: StudentDetailModel): boolean {
-    const isEditPermissionAvailable: boolean = this.authService.isPermissionAvailable('' as any);
+    const isEditPermissionAvailable: boolean = this.authService.isPermissionAvailable(PermissionsList.STUDENTSUPDATE);
     if (isEditPermissionAvailable) {
       return !student.isEditMode
     } else {
-      const isParticalEditPermissionAvailable: boolean = this.authService.isPermissionAvailable('' as any);
+      const isParticalEditPermissionAvailable: boolean = this.authService.isPermissionAvailable(PermissionsList.STUDENTSPARTIALUPDATE);
       const userId: number = this.authService.getLoggedInUserId();
-      return isParticalEditPermissionAvailable && userId === student.id && !student.isEditMode;
+      return isParticalEditPermissionAvailable && userId === student.userId && !student.isEditMode;
     }
   }
 

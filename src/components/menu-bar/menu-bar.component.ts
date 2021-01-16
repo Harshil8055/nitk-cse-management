@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/auth.service';
+import { AuthService, PermissionsList } from 'src/app/auth.service';
 
 export enum MenuBarOptions {
   home = 'home',
@@ -26,6 +26,8 @@ export enum MenuBarOptions {
 export class MenuBarComponent implements OnInit {
 
   menuBarOptions = MenuBarOptions;
+
+  permission = PermissionsList;
 
   constructor(
     private route: Router,
@@ -62,6 +64,10 @@ export class MenuBarComponent implements OnInit {
 
   isAdminLoggedIn() {
     return this.authService.isAdminLoggedIn();
+  }
+
+  isPermissioinAvailable(permission: PermissionsList) {
+    return this.authService.isPermissionAvailable(permission);
   }
 
 }

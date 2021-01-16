@@ -67,8 +67,8 @@ export class PeopleListComponent implements OnInit, OnChanges {
     }
   }
 
-  isPermissionAvailable(permission: any) {
-    return this.authService.isPermissionAvailable(permission);
+  isPeopleCreatePermissionAvailable() {
+    return this.authService.isPermissionAvailable(PermissionsList.PEOPLECREATE)
   }
 
   resetPeopleList() {

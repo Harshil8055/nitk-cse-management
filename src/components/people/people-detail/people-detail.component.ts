@@ -18,7 +18,8 @@ export interface PeopleDetailApiResponse {
     name: string,
     phd: string,
     phone: string,
-    photo: string
+    photo: string,
+    userId: number
   },
   projects: Array<{
     role: string,
@@ -41,6 +42,7 @@ export class PeopleDetailModel {
   mTech: string = null as any;
   bTech: string = null as any;
   achievementInfo: string[] = [];
+  userId: number = null as any;
   projectInfo: Array<{
     role: string,
     projects: string[]
@@ -50,6 +52,7 @@ export class PeopleDetailModel {
 
   convertToLocal(apiResponse: PeopleDetailApiResponse): PeopleDetailModel {
     this.id = apiResponse.details.id;
+    this.userId = apiResponse.details.userId;
     this.name = apiResponse.details.name;
     this.designation = apiResponse.details.designation;
     this.dateOfJoining = apiResponse.details.dateOfJoining;
@@ -106,8 +109,6 @@ export class PeopleDetailComponent implements OnInit {
 
   queryParamDesignation: string = null as any;
 
-  permissionList = PermissionsList;
-
   constructor(
     private activeRoute: ActivatedRoute,
     private apiService: ApiService,
@@ -117,8 +118,19 @@ export class PeopleDetailComponent implements OnInit {
   ) {
   }
 
-  isPermissionAvailable(permission: any) {
-    return this.authService.isPermissionAvailable(permission);
+  isPeopleDeletePermissionAvailable() {
+    return this.authService.isPermissionAvailable(PermissionsList.PEOPLEDELETE)
+  }
+
+  isPeopleEditPermissionAvailable() {
+    const isEditPermissionAvailable: boolean = this.authService.isPermissionAvailable(PermissionsList.PEOPLEUPDATE);
+    if (isEditPermissionAvailable) {
+      return true
+    } else {
+      const isParticalEditPermissionAvailable: boolean = this.authService.isPermissionAvailable(PermissionsList.PEOPLEPARTIALUPDATE);
+      const userId: number = this.authService.getLoggedInUserId();
+      return isParticalEditPermissionAvailable && this.peopleDetail && userId === this.peopleDetail.userId;
+    }
   }
 
   ngOnInit(): void {
@@ -132,6 +144,7 @@ export class PeopleDetailComponent implements OnInit {
       this.apiService.getById('deatailteacher', peopleId).subscribe((response: PeopleDetailApiResponse[]) => {
         this.peopleDetailApiResponse = Object.assign({}, response[0]);
         this.peopleDetail = new PeopleDetailModel().convertToLocal(response[0]);
+        this.openInEditMode = false;
       })
     } else {
       this.peopleEditClickHandler();
@@ -172,7 +185,8 @@ export class PeopleDetailComponent implements OnInit {
         name: null as any,
         phd: null as any,
         phone: null as any,
-        photo: null as any
+        photo: null as any,
+        userId: null as any
       },
       achievements: [],
       publications: [],
@@ -258,7 +272,9 @@ export class PeopleDetailComponent implements OnInit {
       requestPayload['publications'] = publications;
       this.apiService.post('people', requestPayload).subscribe((response: any) => {
         if (response && response.status) {
-
+          if (response.id) {
+            this.peopleGetById(response.id);
+          }
         } else {
           alert("Something went wrong while saving people's data.");
         }

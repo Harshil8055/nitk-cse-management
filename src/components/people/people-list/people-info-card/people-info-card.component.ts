@@ -28,10 +28,7 @@ export class PeopleInfoCardComponent implements OnInit {
   }
 
   cardClickHandler() {
-    // if (this.isPermissionAvailable('') && this.peopleDetail && this.peopleDetail.id) {
-    //   this.route.navigate(['main', 'people-detail', 'edit', this.peopleDetail.id]);
-    // }
-    if (this.peopleDetail && this.peopleDetail.id) {
+    if (this.isPermissionAvailable(PermissionsList.PEOPLEVIEW) && this.peopleDetail && this.peopleDetail.id) {
       this.route.navigate(['main', 'people-detail', 'edit', this.peopleDetail.id]);
     }
   }

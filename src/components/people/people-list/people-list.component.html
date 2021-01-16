@@ -2,7 +2,7 @@
     <div *ngFor="let peopleDetails of peopleDetailsWithDesignation">
         <div *ngIf="!isNoneDesignation(peopleDetails)" class="designation-name-container header-title-container">
             <span style="padding-right: 0.5rem;">{{peopleDetails.designation}}</span>
-            <!-- <span *ngIf="isPermissionAvailable('')" class="action-icon-container fa fa-plus-circle" (click)="addPeopleClickHandler(peopleDetails.designation)"></span> -->
+            <span *ngIf="isPeopleCreatePermissionAvailable()" class="action-icon-container fa fa-plus-circle" (click)="addPeopleClickHandler(peopleDetails.designation)"></span>
         </div>
         <div class="people-detail-container">
             <div *ngFor="let people of peopleDetails.peopleDetailsList" class="people-info-card-wrapper-container">

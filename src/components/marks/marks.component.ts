@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
+import { AuthService, PermissionsList } from 'src/app/auth.service';
 import { CourseCodes, CourseListModel } from '../people/students/students.component';
 
 export class StudentMarkDetails {
@@ -7,6 +8,8 @@ export class StudentMarkDetails {
   rollNo: string = null as any;
   name: string = null as any;
   marks: number = null as any;
+  marksId: number = null as any;
+  userId: number = null as any;
   isEditMode: boolean = false;
 }
 
@@ -23,10 +26,15 @@ export class MarksComponent implements OnInit {
 
   selectedYear: number = null as any;
 
-  studentList: any[] = [];
+  studentList: StudentMarkDetails[] = [];
+
+  subjectList: any[] = [];
+
+  selectedSubject: any = null;
 
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -124,13 +132,27 @@ export class MarksComponent implements OnInit {
     this.selectedYear = null as any;
   }
 
+  subjectChangeHandler(event: any) {
+    const selectedItem: string = event && event.target && event.target.value;
+    this.selectedSubject = this.subjectList.find((subjectValue: any) => {
+      return subjectValue && selectedItem && subjectValue.id === selectedItem;
+    });
+  }
+
+  yearChangeHandler() {
+    if (this.selectedCourse && this.selectedYear) {
+      this.apiService.get('subjects', {courseId: this.selectedCourse.id, year: this.selectedYear }).subscribe((response) => {
+        if (response && response.length) {
+          this.subjectList = response;
+        }
+      });
+    }
+  }
+
   filterClickHandler() {
-    if (this.selectedCourse && this.selectedCourse.id && this.selectedYear) {
-      this.apiService.get('students', { courseId: this.selectedCourse.id, year: this.selectedYear }).subscribe((response) => {
+    if (this.selectedCourse && this.selectedCourse.id && this.selectedYear && this.selectedSubject && this.selectedSubject.id) {
+      this.apiService.get('marks', { courseId: this.selectedCourse.id, year: this.selectedYear, subjectId: this.selectedSubject.id }).subscribe((response) => {
         this.studentList = response;
-        this.studentList.forEach((value: StudentMarkDetails) => {
-          value.marks = 0;
-        })
       });
     }
   }
@@ -143,10 +165,31 @@ export class MarksComponent implements OnInit {
     iframe.window.print();
   }
 
-  markClickHandler(student: any) {
-    if (!student.isEditMode) {
+  markClickHandler(student: StudentMarkDetails) {
+    if (student && this.isMarksEditPermissionAvailable() && !student.isEditMode) {
       student.isEditMode = true;
     }
+  }
+
+  isMarksEditPermissionAvailable(): boolean {
+    const isEditPermissionAvailable: boolean = this.authService.isPermissionAvailable(PermissionsList.MARKSUPDATE);
+    if (isEditPermissionAvailable) {
+      return true
+    } else {
+      const isParticalEditPermissionAvailable: boolean = this.authService.isPermissionAvailable(PermissionsList.MARKSPARTIALUPDATE);
+      const userId: number = this.authService.getLoggedInUserId();
+      return isParticalEditPermissionAvailable && this.selectedSubject && userId === this.selectedSubject.userId;
+    }
+  }
+
+  saveClickHandler() {
+    this.apiService.post('marks', { subjectId: this.selectedSubject.id, marks: this.studentList }).subscribe((response) => {
+      if (response && response.status) {
+        this.filterClickHandler();
+      } else {
+        alert("Something went wrong while saving mark's data.");
+      }
+    })
   }
 
 }

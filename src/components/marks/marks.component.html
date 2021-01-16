@@ -13,7 +13,7 @@
             Year
         </div>
         <div class="filter-dropdown-container">
-            <select *ngIf="selectedCourse && selectedCourse.yearList && selectedCourse.yearList.length" [(ngModel)]="selectedYear" required>
+            <select *ngIf="selectedCourse && selectedCourse.yearList && selectedCourse.yearList.length" (change)="yearChangeHandler()" [(ngModel)]="selectedYear" required>
                 <option *ngFor="let year of selectedCourse.yearList" [value]="year.year">{{year.title}}</option>
             </select>
             <select *ngIf="!(selectedCourse && selectedCourse.yearList && selectedCourse.yearList.length)"></select>
@@ -22,17 +22,17 @@
             Subject
         </div>
         <div class="filter-dropdown-container">
-            <select *ngIf="selectedCourse && selectedCourse.yearList && selectedCourse.yearList.length" [(ngModel)]="selectedYear" required>
-                <option *ngFor="let year of selectedCourse.yearList" [value]="year.year">{{year.title}}</option>
+            <select *ngIf="subjectList && subjectList.length" (change)="subjectChangeHandler($event)" [ngModel]="null" required>
+                <option *ngFor="let subject of subjectList" [value]="subject.id">{{subject.name}}</option>
             </select>
-            <select *ngIf="!(selectedCourse && selectedCourse.yearList && selectedCourse.yearList.length)"></select>
+            <select *ngIf="!(subjectList && subjectList.length)"></select>
         </div>
         <div class="action-icon-container fa fa-filter" (click)="filterClickHandler()"></div>
     </div>
     <div class="marks-details-container" *ngIf="studentList && studentList.length">
         <div class="mark-details-action-container">
             <span class="action-icon-container fa fa-print" (click)="printClickHandler()"></span>
-            <span class="action-icon-container fa fa-save"></span>
+            <span *ngIf="isMarksEditPermissionAvailable()" class="action-icon-container fa fa-save" (click)="saveClickHandler()"></span>
         </div>
         <div id="studentTable">
             <table class="table-container">

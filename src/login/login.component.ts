@@ -17,11 +17,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   formValueChangeSubscription: Subscription = null as any;
 
   isIncurrectCredentials: boolean = false;
-  
-  @HostListener('window:popstate', ['$event'])
-  onPopState() {
-    window.history.forward();
-  }
 
   constructor(
     private route: Router,
